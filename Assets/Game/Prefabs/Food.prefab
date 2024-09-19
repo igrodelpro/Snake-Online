@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2564288885050272490}
   - component: {fileID: 2564288885050272491}
   - component: {fileID: 2564288885050272495}
+  - component: {fileID: 3995573749170960178}
   m_Layer: 0
   m_Name: Food
   m_TagString: Untagged
@@ -27,13 +28,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2564288885050272488}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1, y: 0.3, z: 1}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2564288885768288936}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2564288885050272493
 MeshFilter:
@@ -54,6 +56,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -92,9 +95,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2564288885050272488}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2564288885050272495
@@ -109,7 +120,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0406340a6c8cd7b4c91fc4088a1e4fe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
   particlePrefab: {fileID: 3189939752094581079, guid: f4562d466179f2b4084db2f787b69b56, type: 3}
+  renderer: {fileID: 2564288885050272490}
+--- !u!114 &3995573749170960178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2564288885050272488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  _assetId: 1126093819
+  serverOnly: 0
+  visibility: 0
+  hasSpawned: 0
 --- !u!1 &2564288885768288937
 GameObject:
   m_ObjectHideFlags: 0
@@ -134,12 +166,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2564288885768288937}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2564288885050272492}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &2564288885768288939
 Light:
