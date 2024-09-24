@@ -7,15 +7,9 @@ using Mirror;
 public class Snake : NetworkBehaviour
 {
     [SerializeField] float speed = 3f, rotationSpeed = 180f, speedChange = 0.5f;
-    [SerializeField] GameObject tailPrefab;
 
     public float Speed { get { return speed; } private set { speed = value; } }
-    public List<GameObject> Tails { get; } = new List<GameObject>();
 
-    void Start()
-    {
-        Tails.Add(gameObject);
-    }
 
     public override void OnStartServer()
     {
@@ -45,9 +39,4 @@ public class Snake : NetworkBehaviour
         if (other.CompareTag("Border")) SceneManager.LoadScene(0);
     }
 
-    public void AddTail()
-    {
-        Instantiate(tailPrefab, Tails[Tails.Count-1].transform.position, Quaternion.identity);
-        speed += speedChange;
-    }
 }

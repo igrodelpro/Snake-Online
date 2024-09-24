@@ -18,13 +18,14 @@ public class Food : NetworkBehaviour
         if (!_isActive || !other.CompareTag("Player")) return;
 
         _isActive = false;
+        RpcOnFoodEaten();
 
         GameObject boom = Instantiate
             (particlePrefab, transform.position, particlePrefab.transform.rotation);
         NetworkServer.Spawn(boom);
-        RpcOnFoodEaten();
-        ServerFoodEaten?.Invoke(other.gameObject);
         StartCoroutine(DestroyBoomDelay(boom, 3f));
+
+        ServerFoodEaten?.Invoke(other.gameObject);
     }
 
     [ClientRpc]
