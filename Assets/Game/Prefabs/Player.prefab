@@ -484,7 +484,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d024696697c73148a141efd73997a60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  speed: 0.5
   rotationSpeed: 180
   speedChange: 0.5
   tailPrefab: {fileID: 6868670569204301540, guid: f0756ea880ffc1043bf943aabbd94281, type: 3}

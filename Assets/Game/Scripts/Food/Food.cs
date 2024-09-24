@@ -10,7 +10,7 @@ public class Food : NetworkBehaviour
 
     private bool _isActive = true;
 
-    public static event System.Action ServerFoodEaten;
+    public static event System.Action<GameObject> ServerFoodEaten;
 
     [ServerCallback]
     void OnTriggerEnter(Collider other)
@@ -18,11 +18,12 @@ public class Food : NetworkBehaviour
         if (!_isActive || !other.CompareTag("Player")) return;
 
         _isActive = false;
+
         GameObject boom = Instantiate
             (particlePrefab, transform.position, particlePrefab.transform.rotation);
         NetworkServer.Spawn(boom);
         RpcOnFoodEaten();
-        ServerFoodEaten?.Invoke();
+        ServerFoodEaten?.Invoke(other.gameObject);
         StartCoroutine(DestroyBoomDelay(boom, 3f));
     }
 
@@ -38,4 +39,6 @@ public class Food : NetworkBehaviour
         NetworkServer.Destroy(boom);
         NetworkServer.Destroy(gameObject);
     }
+
+    //В оригинальной игре змейка ускорялась каждый раз при поедании еды.Попробуй реализовать этот функционал, чтобы он работал в мультиплеерной версии.
 }
