@@ -5,9 +5,9 @@ using Mirror;
 
 public class TailSpawner : NetworkBehaviour
 {
-    [SerializeField] GameObject tailPrefab;
+    [SerializeField] TailNetwork tailPrefab;
 
-    public List<GameObject> Tails { get; } = new List<GameObject>();
+    public SyncList<TailNetwork> Tails { get; } = new SyncList<TailNetwork>();
 
     public override void OnStartServer()
     {
@@ -23,8 +23,11 @@ public class TailSpawner : NetworkBehaviour
     {
         if (playerWhoAte != gameObject) return;
 
-        GameObject tail = Instantiate(tailPrefab, Tails.Count == 0 ? transform.position : Tails[Tails.Count - 1].transform.position, Quaternion.identity);
-        NetworkServer.Spawn(tail);
+        Transform target = Tails.Count == 0 ? transform : Tails[Tails.Count - 1].transform;
+
+        TailNetwork tail = Instantiate(tailPrefab, target.position, Quaternion.identity);
+        tail.InitServer(target, GetComponent<SnakeNetwork>());
+        NetworkServer.Spawn(tail.gameObject);
         Tails.Add(tail);
     }
 }
