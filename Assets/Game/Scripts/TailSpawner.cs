@@ -27,7 +27,8 @@ public class TailSpawner : NetworkBehaviour
 
         TailNetwork tail = Instantiate(tailPrefab, target.position, Quaternion.identity);
         tail.InitServer(target, GetComponent<SnakeNetwork>());
-        NetworkServer.Spawn(tail.gameObject);
+        NetworkServer.Spawn(tail.gameObject, connectionToClient);
+
         Tails.Add(tail);
     }
 }

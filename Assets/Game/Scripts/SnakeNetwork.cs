@@ -11,7 +11,6 @@ public class SnakeNetwork : NetworkBehaviour
 
     public float Speed { get { return speed; } private set { speed = value; } }
 
-
     public override void OnStartServer()
     {
         Food.ServerFoodEaten += IncreaseSpeed;
