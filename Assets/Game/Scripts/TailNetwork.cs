@@ -15,8 +15,11 @@ public class TailNetwork : NetworkBehaviour
         _target = target;
     }
 
+    [Client]
     public void UpdateDestination()
     {
+        if (!isOwned) return;
+
         float distance = _target.localScale.z * 0.5f;
         Vector3 direction = (_target.position - transform.position).normalized;
         Vector3 newPos = _target.position - direction * distance;

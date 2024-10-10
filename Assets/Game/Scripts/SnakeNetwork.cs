@@ -41,10 +41,4 @@ public class SnakeNetwork : NetworkBehaviour
             tail.UpdateDestination();
         }
     }
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Border")) SceneManager.LoadScene(0);
-    }
-
 }

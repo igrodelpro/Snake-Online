@@ -19,6 +19,7 @@ public class TailSpawner : NetworkBehaviour
         Food.ServerFoodEaten -= AddTail;
     }
 
+    [Server]
     public void AddTail(GameObject playerWhoAte)
     {
         if (playerWhoAte != gameObject) return;
