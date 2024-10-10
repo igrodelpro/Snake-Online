@@ -1135,6 +1135,7 @@ MonoBehaviour:
   - {fileID: 4379303857279512933, guid: d55821bff4e33aa4a8627e9f28c1a1d7, type: 3}
   - {fileID: 3189939752094581079, guid: f4562d466179f2b4084db2f787b69b56, type: 3}
   - {fileID: 6868670569204301540, guid: f0756ea880ffc1043bf943aabbd94281, type: 3}
+  - {fileID: 4973338393691519710, guid: dd9483e560527c54a88d133f8f8aa18f, type: 3}
   exceptionsDisconnect: 1
   snapshotSettings:
     bufferTimeMultiplier: 2
@@ -1151,6 +1152,7 @@ MonoBehaviour:
   evaluationInterval: 3
   timeInterpolationGui: 0
   _foodSpawnerPrefab: {fileID: 4258623612493961731, guid: d55821bff4e33aa4a8627e9f28c1a1d7, type: 3}
+  _gameOverHandlerPrefab: {fileID: 8776378696811576705, guid: dd9483e560527c54a88d133f8f8aa18f, type: 3}
 --- !u!4 &1262418648
 Transform:
   m_ObjectHideFlags: 0

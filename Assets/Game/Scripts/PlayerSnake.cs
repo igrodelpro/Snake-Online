@@ -1,12 +1,21 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using Mirror;
 
 public class PlayerSnake : NetworkBehaviour
 {
     [SerializeField] TailSpawner tailSpawner;
+    [SerializeField] PlayerName playerName;
+
+    static public event Action<PlayerName> ServerPlayerSpawned;
+    static public event Action<PlayerName> ServerPlayerDespawned;
+
+    public override void OnStartServer()
+    {
+        ServerPlayerSpawned?.Invoke(playerName);
+    }
 
     [Server]
     private void OnTriggerEnter(Collider other)
@@ -27,6 +36,7 @@ public class PlayerSnake : NetworkBehaviour
     [Server]
     private void DestroySelf()
     {
+        ServerPlayerDespawned?.Invoke(playerName);
         foreach (var t in tailSpawner.Tails)
         {
             NetworkServer.Destroy(t.gameObject);

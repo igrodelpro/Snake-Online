@@ -10,6 +10,8 @@ public class PlayerName : NetworkBehaviour
 
     [SyncVar(hook = "UpdateNameText")] private string _name;
 
+    public string Name { get { return _name; } }
+
     public override void OnStartServer()
     {
         _name = $"Player {connectionToClient.connectionId}";

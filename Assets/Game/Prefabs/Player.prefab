@@ -608,6 +608,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   tailSpawner: {fileID: 1384127360971797262}
+  playerName: {fileID: 4026380396818743919}
 --- !u!1 &4031708365858201725
 GameObject:
   m_ObjectHideFlags: 0
