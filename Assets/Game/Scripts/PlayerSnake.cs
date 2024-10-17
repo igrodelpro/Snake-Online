@@ -17,7 +17,7 @@ public class PlayerSnake : NetworkBehaviour
         ServerPlayerSpawned?.Invoke(playerName);
     }
 
-    [Server]
+    [ServerCallback]
     private void OnTriggerEnter(Collider other)
     {
         switch (other.tag)
