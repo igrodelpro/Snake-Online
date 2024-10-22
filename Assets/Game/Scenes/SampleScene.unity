@@ -1734,6 +1734,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3948433765039782392, guid: d8cf08aad27c42d4b8c76254f56de06c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4798866333052477288, guid: d8cf08aad27c42d4b8c76254f56de06c, type: 3}
       propertyPath: m_Name
       value: GameOverDisplay
