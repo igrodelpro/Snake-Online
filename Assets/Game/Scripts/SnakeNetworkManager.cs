@@ -7,6 +7,7 @@ public class SnakeNetworkManager : NetworkManager
 {
     [SerializeField] FoodSpawner _foodSpawnerPrefab;
     [SerializeField] GameOverHandler _gameOverHandlerPrefab;
+    [SerializeField] GameOverDisplay _gameOverDisplay;
 
     private void OnEnable()
     {
@@ -18,15 +19,16 @@ public class SnakeNetworkManager : NetworkManager
         GameOverDisplay.ExitMenuClicked -= ExitMenu;
     }
 
+    public override void OnStartClient()
+    {
+        _gameOverDisplay.SetActive(false);
+    }
+
     private void ExitMenu()
     {
         if (NetworkServer.active && NetworkClient.isConnected)
         {
             StopHost();
-        }
-        else if (NetworkServer.active)
-        {
-            StopServer();
         }
         else
         {
@@ -47,5 +49,15 @@ public class SnakeNetworkManager : NetworkManager
 
         FoodSpawner foodSpawner = Instantiate(_foodSpawnerPrefab);
         NetworkServer.Spawn(foodSpawner.gameObject);
+    }
+
+    public override void OnStopHost()
+    {
+        _gameOverDisplay.SetActive(false);
+    }
+
+    public override void OnStopClient()
+    {
+        _gameOverDisplay.SetActive(false);
     }
 }
